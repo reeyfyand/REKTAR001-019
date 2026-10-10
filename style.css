@@ -1,0 +1,1449 @@
+/* Custom CSS with a non-generic modern feel */
+
+:root {
+    --primary-color: #4f46e5;
+    /* Indigo */
+    --primary-dark: #3730a3;
+    --accent-color: #f97316;
+    /* Orange */
+    --bg-color: #f8fafc;
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    max-width: 100%;
+    line-height: 1.6;
+}
+
+
+/* Typography */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+}
+
+span {
+    color: var(--primary-color);
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+
+/* Navbar */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 1rem 5%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-icon {
+    color: var(--accent-color);
+    font-size: 2rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-main);
+    border: 2px solid var(--text-main);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+    background: var(--text-main);
+    color: var(--white);
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+
+/* Hero Section */
+
+.hero {
+    min-height: 100vh;
+    padding: 120px 5% 60px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.hero-bg-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: -1;
+    opacity: 0.6;
+    animation: floatShape 10s infinite alternate ease-in-out;
+}
+
+.shape-1 {
+    top: -10%;
+    right: -5%;
+    width: 500px;
+    height: 500px;
+    background: rgba(79, 70, 229, 0.4);
+}
+
+.shape-2 {
+    bottom: -20%;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(249, 115, 22, 0.3);
+    animation-delay: -5s;
+}
+
+.shape-3 {
+    top: 40%;
+    left: 40%;
+    width: 300px;
+    height: 300px;
+    background: rgba(56, 189, 248, 0.4);
+    animation-duration: 15s;
+}
+
+@keyframes floatShape {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        transform: translate(30px, 50px) scale(1.1);
+    }
+}
+
+.hero-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--accent-color);
+    border-radius: 50px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    border: 1px solid rgba(249, 115, 22, 0.2);
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+}
+
+.hero-title span {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-title span:nth-child(1) {
+    color: var(--primary-color);
+}
+
+.hero-title span:nth-child(2) {
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 90%;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+
+/* Hero Visual */
+
+.hero-visual {
+    position: relative;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 30px;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.hero-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.floating-badge {
+    position: absolute;
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: float 4s infinite ease-in-out;
+}
+
+.floating-badge i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    background: rgba(79, 70, 229, 0.1);
+    padding: 0.5rem;
+    border-radius: 12px;
+}
+
+.floating-badge.badge-2 i {
+    color: var(--accent-color);
+    background: rgba(249, 115, 22, 0.1);
+}
+
+.floating-badge div {
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-badge strong {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.floating-badge span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.badge-1 {
+    top: 10%;
+    left: -10%;
+}
+
+.badge-2 {
+    bottom: 15%;
+    right: -10%;
+    animation-delay: -2s;
+}
+
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+
+/* About Section */
+
+.about-section {
+    padding: 100px 5%;
+    background: var(--white);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.image-composition {
+    position: relative;
+    height: 600px;
+}
+
+.img-1 {
+    width: 65%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.img-2 {
+    width: 55%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 10px solid var(--white);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.experience-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 2rem;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(79, 70, 229, 0.4);
+    border: 8px solid var(--white);
+}
+
+.experience-box h2 {
+    font-size: 2.5rem;
+    margin: -5px 0;
+}
+
+.section-subtitle {
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.feature-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.feature-list i {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+
+/* Marquee */
+
+.marquee-wrapper {
+    background: var(--text-main);
+    color: var(--white);
+    padding: 1.5rem 0;
+    overflow: hidden;
+    position: relative;
+    transform: rotate(-2deg) scale(1.05);
+    margin: 50px 0;
+}
+
+.marquee {
+    white-space: nowrap;
+    animation: scroll-left 20s linear infinite;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+/* Responsive */
+
+@media (max-width: 992px) {
+    .hero-container,
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+    }
+    .nav-links {
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .btn-primary {
+        display: none;
+    }
+    .badge-1,
+    .badge-2 {
+        display: none;
+    }
+}
+
+
+/* Sections General */
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+
+/* Programs Section */
+
+.programs-section {
+    padding: 100px 5%;
+    background: var(--bg-color);
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.program-card {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-img-wrapper {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.program-card:hover .card-img-wrapper img {
+    transform: scale(1.1);
+}
+
+.card-icon {
+    position: absolute;
+    bottom: -20px;
+    right: 30px;
+    background: var(--accent-color);
+    color: var(--white);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    border: 5px solid var(--white);
+    z-index: 2;
+}
+
+.card-content {
+    padding: 2.5rem 2rem 2rem;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.card-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: gap 0.3s;
+}
+
+.btn-link:hover {
+    gap: 0.8rem;
+}
+
+
+/* Gallery Section */
+
+.gallery-section {
+    padding: 100px 5%;
+    background: var(--bg-color);
+    /* Berubah dari white ke bg-color */
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 250px;
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    grid-column: span 1;
+}
+
+.gallery-item.item-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery-item.item-wide {
+    grid-column: span 2;
+}
+
+.gallery-item img,
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.gallery-overlay span {
+    color: var(--white);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.gallery-item:hover .gallery-overlay span {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   Footer & CTA Section
+   ========================================= */
+
+.footer {
+    background: var(--text-main);
+    /* Mengembalikan warna gelap */
+    color: var(--white);
+    padding: 0 5%;
+    position: relative;
+    margin-top: 150px;
+}
+
+.cta-banner {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 30px;
+    padding: 4rem 2rem;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    transform: translateY(-50%);
+    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+    position: relative;
+    /* Penting untuk tombol close */
+}
+
+.cta-banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-heading);
+    color: var(--white);
+}
+
+.cta-banner p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    color: var(--white);
+}
+
+
+/* Desain Tombol X (Close CTA) */
+
+.close-cta {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.close-cta:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+
+/* Layout 3 Kolom Footer */
+
+.footer-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1.5fr 1fr;
+    gap: 3rem;
+    padding-bottom: 4rem;
+    margin-top: -30px;
+}
+
+.footer-brand .footer-logo {
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.footer-brand .footer-desc {
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 90%;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    color: var(--white);
+    font-size: 1.3rem;
+    background: rgba(255, 255, 255, 0.1);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.footer-social a:hover {
+    background: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.footer-info-links h3,
+.footer-map h3 {
+    color: var(--white);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    font-family: var(--font-heading);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    color: #94a3b8;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-links i {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    margin-top: 2px;
+}
+
+.map-container {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .gallery-item,
+    .gallery-item.item-large,
+    .gallery-item.item-wide {
+        grid-column: span 1;
+    }
+    .cta-banner {
+        padding: 2rem 1.5rem;
+    }
+}
+
+
+/* Team / Struktur Organisasi Section */
+
+.team-section {
+    padding: 100px 5%;
+    background: var(--white);
+}
+
+.team-hierarchy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+}
+
+
+/* =========================================
+   Pengaturan Level Struktur & Jarak Foto
+   ========================================= */
+
+.team-level {
+    display: flex;
+    justify-content: center;
+    /* Jarak antar foto diperlebar dari 2rem menjadi 4rem agar tidak berdempetan */
+    gap: 4rem;
+    flex-wrap: wrap;
+    width: 100%;
+    position: relative;
+    /* Penting agar garis absolut mengikuti kotak ini */
+}
+
+.level-1,
+.level-2,
+.level-3,
+.level-4 {
+    position: relative;
+}
+
+
+/* =========================================
+   Garis Penghubung Struktur Organisasi
+   ========================================= */
+
+
+/* 1. Garis lurus tegak dari Ketua (Level 1) ke Wakil Ketua (Level 2) */
+
+.level-1::after {
+    content: '';
+    position: absolute;
+    bottom: -6rem;
+    /* Menutupi jarak gap 6rem ke level bawahnya */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 6rem;
+    background: rgba(79, 70, 229, 0.4);
+}
+
+
+/* 2. Garis tegak pendek dari Wakil Ketua (Level 2) menuju cabang bawah */
+
+.level-2::after {
+    content: '';
+    position: absolute;
+    bottom: -3rem;
+    /* Turun setengah jalan sebelum bercabang */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 3rem;
+    background: rgba(79, 70, 229, 0.4);
+}
+
+
+/* 3. Garis cabang horizontal (bentuk [ terbalik) di atas Sekretaris (Level 3) */
+
+.level-3::before {
+    content: '';
+    position: absolute;
+    top: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Lebar = Lebar card (260px) + Gap antar card (4rem) agar tepat di tengah foto */
+    width: calc(260px + 4rem);
+    height: 3rem;
+    border-top: 2px solid rgba(79, 70, 229, 0.4);
+    border-left: 2px solid rgba(79, 70, 229, 0.4);
+    border-right: 2px solid rgba(79, 70, 229, 0.4);
+    border-bottom: none;
+}
+
+
+/* 4. Dua garis lurus tegak dari masing-masing Sekretaris (Level 3) ke Bendahara (Level 4) */
+
+.level-3::after {
+    content: '';
+    position: absolute;
+    bottom: -6rem;
+    /* Menembus ke bawah menuju bendahara */
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(260px + 4rem);
+    /* Menyesuaikan lebar kotak sebelumnya */
+    height: 6rem;
+    border-left: 2px solid rgba(79, 70, 229, 0.4);
+    border-right: 2px solid rgba(79, 70, 229, 0.4);
+    border-top: none;
+    border-bottom: none;
+}
+
+.team-card {
+    background: var(--bg-color);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    width: 260px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.team-card.chairman {
+    width: 300px;
+    background: linear-gradient(145deg, #ffffff, var(--bg-color));
+    border: 2px solid rgba(79, 70, 229, 0.1);
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.08);
+}
+
+.member-img {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .member-img img {
+    transform: scale(1.08);
+}
+
+.member-socials {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.team-card:hover .member-socials {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.member-socials a {
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.member-socials a:hover {
+    color: var(--accent-color);
+}
+
+.member-info h3 {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin-bottom: 0.2rem;
+}
+
+.member-info p {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+
+/* Sembunyikan garis di tampilan HP (Mobile) agar tidak berantakan jika tumpuk vertikal */
+
+@media (max-width: 992px) {
+    .team-card {
+        width: calc(33.333% - 1.5rem);
+    }
+}
+
+
+/* Sembunyikan garis dan jadikan 1 kolom di tampilan HP (Mobile) */
+
+@media (max-width: 768px) {
+    .team-level {
+        gap: 2rem;
+        flex-direction: column;
+        /* Memaksa kartu berjejer ke bawah */
+        align-items: center;
+    }
+    .level-1::after,
+    .level-2::after,
+    .level-3::before,
+    .level-3::after {
+        display: none;
+    }
+    .team-card {
+        width: 100%;
+        max-width: 280px;
+        /* Ukuran maksimal kartu agar tidak terlalu lebar di HP */
+    }
+    .team-card.chairman {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .team-card {
+        width: 100%;
+    }
+}
+
+
+/* Floating Emoji Animation */
+
+.chairman-wrapper {
+    position: relative;
+    display: block;
+    /* block agar mengisi flex item dengan benar */
+    z-index: 1;
+    cursor: pointer;
+}
+
+
+/* Semua team-card di dalam wrapper perlu z-index agar emoji bisa muncul di luar */
+
+.chairman-wrapper .team-card {
+    position: relative;
+    z-index: 2;
+}
+
+.floating-emoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    /* di atas card */
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.2);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+}
+
+.emoji-inner {
+    display: inline-block;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+}
+
+.chairman-wrapper:hover,
+.chairman-wrapper.active {
+    z-index: 50;
+}
+
+.chairman-wrapper:hover .floating-emoji,
+.chairman-wrapper.active .floating-emoji {
+    opacity: 1;
+    transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% + var(--ty, 0px))) scale(1);
+}
+
+.chairman-wrapper:hover .emoji-inner,
+.chairman-wrapper.active .emoji-inner {
+    animation: floatContinuous 4s ease-in-out infinite;
+}
+
+@keyframes floatContinuous {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   Modal (Popup) Detail Program
+   ========================================= */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 550px;
+    position: relative;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.modal-content h3 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.modal-img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    background-color: #f1f5f9;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.modal-content p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.modal-list {
+    list-style: none;
+    background: var(--bg-color);
+    padding: 1.5rem;
+    border-radius: 16px;
+}
+
+.modal-list li {
+    padding: 0.5rem 0;
+    color: var(--text-main);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.modal-list li:last-child {
+    border-bottom: none;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(249, 115, 22, 0.1);
+    color: var(--accent-color);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: var(--accent-color);
+    color: var(--white);
+    transform: rotate(90deg);
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        padding: 1.5rem;
+    }
+    .modal-img {
+        height: 150px;
+    }
+}
+
+.gallery-item video::-webkit-media-controls-play-button,
+.gallery-item video::-webkit-media-controls-timeline,
+.gallery-item video::-webkit-media-controls-current-time-display,
+.gallery-item video::-webkit-media-controls-time-remaining-display {
+    display: none !important;
+}
+
+
+/* Pengaturan ukuran video di dalam modal */
+
+.modal-video {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    background-color: #0f172a;
+    /* Latar belakang gelap agar nyaman ditonton */
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+}
+
+
+/* Menyembunyikan tombol Play, Waktu, dan Timeline agar hanya tersisa Suara & Fullscreen (termasuk untuk modal) */
+
+.gallery-item video::-webkit-media-controls-play-button,
+.gallery-item video::-webkit-media-controls-timeline,
+.gallery-item video::-webkit-media-controls-current-time-display,
+.gallery-item video::-webkit-media-controls-time-remaining-display,
+.modal-content video::-webkit-media-controls-play-button,
+.modal-content video::-webkit-media-controls-timeline,
+.modal-content video::-webkit-media-controls-current-time-display,
+.modal-content video::-webkit-media-controls-time-remaining-display {
+    display: none !important;
+}
+
+
+/* =========================================
+   Grid Untuk Daftar Anggota
+   ========================================= */
+
+.members-title {
+    text-align: center;
+    margin: 6rem 0 3rem;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    position: relative;
+}
+
+.members-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+
+/* =========================================
+   Slider Horizontal Untuk Daftar Anggota
+   ========================================= */
+
+.members-title {
+    text-align: center;
+    margin: 6rem 0 3rem;
+    font-size: 2rem;
+    color: var(--primary-dark);
+    position: relative;
+}
+
+.members-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 0.5rem auto 0;
+    border-radius: 2px;
+}
+
+
+/* Mengubah grid menjadi flexbox yang bisa di-scroll ke samping */
+
+.members-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem 1rem;
+    /* Efek jepret (snap) saat digeser di HP */
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* Menyembunyikan scrollbar agar rapi */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.members-grid::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}
+
+
+/* Memastikan kartu tidak menyusut dan pas di posisinya */
+
+.members-grid .chairman-wrapper {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+}
+
+
+/* Mengunci ukuran kartu agar tidak melebar/gepeng */
+
+.members-grid .team-card {
+    width: 240px;
+}
+
+.members-grid .member-img {
+    height: 240px;
+}
